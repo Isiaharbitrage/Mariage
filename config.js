@@ -68,11 +68,11 @@ window.MARIAGE = {
 
   // Configuration Firebase (voir README.md, étape 2)
   firebase: {
-    apiKey: "A_REMPLACER",
-    authDomain: "A_REMPLACER.firebaseapp.com",
-    projectId: "A_REMPLACER",
-    storageBucket: "A_REMPLACER.appspot.com",
-    messagingSenderId: "A_REMPLACER",
-    appId: "A_REMPLACER"
+    apiKey: "AIzaSyDaz_sw96BUpV2I_FpCLLEUyIx6DBB46E0",
+  authDomain: "mariage-a0ade.firebaseapp.com",
+  projectId: "mariage-a0ade",
+  storageBucket: "mariage-a0ade.firebasestorage.app",
+  messagingSenderId: "672195581101",
+  appId: "1:672195581101:web:be62092a7f74c09eb9e224"
   }
 };

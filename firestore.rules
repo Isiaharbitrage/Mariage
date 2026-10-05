@@ -5,19 +5,16 @@ service cloud.firestore {
     // Remplacez par VOS adresses e-mail (celles créées dans Authentication)
     function estMarie() {
       return request.auth != null
-        && request.auth.token.email in ["VOTRE_EMAIL@gmail.com", "EMAIL_DE_NARJES@gmail.com"];
+        && request.auth.token.email in ["narjes.isiah@gmail.com"];
     }
 
     match /rsvp/{id} {
       // Les invités peuvent seulement AJOUTER une réponse valide
       allow create: if request.resource.data.keys().hasOnly(
-                         ["nom", "presence", "nombre", "accompagnants", "allergies", "chanson", "message", "creeLe"])
+                         ["nom", "presence", "allergies", "chanson", "message", "creeLe"])
                     && request.resource.data.nom is string
                     && request.resource.data.nom.size() > 1 && request.resource.data.nom.size() <= 120
                     && request.resource.data.presence in ["oui", "non"]
-                    && request.resource.data.nombre is int
-                    && request.resource.data.nombre >= 0 && request.resource.data.nombre <= 10
-                    && request.resource.data.accompagnants.size() <= 300
                     && request.resource.data.allergies.size() <= 300
                     && request.resource.data.chanson.size() <= 200
                     && request.resource.data.message.size() <= 1000

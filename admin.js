@@ -33,7 +33,7 @@ onAuthStateChanged(auth, user => {
     afficher();
   }, err => {
     console.error(err);
-    $("#lignes").innerHTML = `<tr><td colspan="9">Accès refusé : vérifiez que votre e-mail est bien listé dans les règles Firestore.</td></tr>`;
+    $("#lignes").innerHTML = `<tr><td colspan="7">Accès refusé : vérifiez que votre e-mail est bien listé dans les règles Firestore.</td></tr>`;
   });
 });
 
@@ -41,25 +41,23 @@ const dateTxt = r => r.creeLe?.toDate ? r.creeLe.toDate().toLocaleDateString("fr
 
 function afficher() {
   const oui = reponses.filter(r => r.presence === "oui");
-  $("#s-presents").textContent = oui.reduce((s, r) => s + (r.nombre || 0), 0);
+  $("#s-presents").textContent = oui.length;
   $("#s-foyers").textContent = reponses.length;
   $("#s-absents").textContent = reponses.filter(r => r.presence === "non").length;
   $("#s-allergies").textContent = oui.filter(r => r.allergies).length;
 
   const q = $("#recherche").value.trim().toLowerCase();
-  const liste = reponses.filter(r => !q || (r.nom + " " + r.accompagnants).toLowerCase().includes(q));
+  const liste = reponses.filter(r => !q || (r.nom || "").toLowerCase().includes(q));
   $("#lignes").innerHTML = liste.length ? liste.map(r => `
     <tr>
       <td><b style="font-weight:500">${esc(r.nom)}</b></td>
       <td><span class="tag ${r.presence}">${r.presence === "oui" ? "Présent" : "Absent"}</span></td>
-      <td>${r.presence === "oui" ? r.nombre : "–"}</td>
-      <td>${esc(r.accompagnants)}</td>
       <td>${esc(r.allergies)}</td>
       <td>${esc(r.chanson)}</td>
       <td>${esc(r.message)}</td>
       <td style="white-space:nowrap">${dateTxt(r)}</td>
       <td><button class="suppr" data-id="${r.id}" title="Supprimer">✕</button></td>
-    </tr>`).join("") : `<tr><td colspan="9" style="text-align:center;color:var(--doux)">Aucune réponse pour l'instant.</td></tr>`;
+    </tr>`).join("") : `<tr><td colspan="7" style="text-align:center;color:var(--doux)">Aucune réponse pour l'instant.</td></tr>`;
 }
 $("#recherche").addEventListener("input", afficher);
 
@@ -78,7 +76,7 @@ function telecharger(nom, contenu, type) {
 }
 
 $("#btn-csv").addEventListener("click", () => {
-  const cols = ["nom", "presence", "nombre", "accompagnants", "allergies", "chanson", "message"];
+  const cols = ["nom", "presence", "allergies", "chanson", "message"];
   const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const lignes = [[...cols, "date"].join(";"), ...reponses.map(r => [...cols.map(c => cell(r[c])), cell(dateTxt(r))].join(";"))];
   telecharger("reponses-mariage.csv", "﻿" + lignes.join("\n"), "text/csv;charset=utf-8");

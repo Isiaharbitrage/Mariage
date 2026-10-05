@@ -164,15 +164,11 @@ form.addEventListener("submit", async e => {
   const presence = form.presence.value;
   if (nom.length < 2) return erreur("Merci d'indiquer votre nom.", form.nom);
   if (!presence) return erreur("Merci d'indiquer si vous serez présent·e.", form.querySelector("[name=presence]"));
-  const nombre = presence === "oui" ? parseInt(form.nombre.value, 10) : 0;
-  if (presence === "oui" && !(nombre >= 1 && nombre <= 10)) return erreur("Nombre de personnes invalide (1 à 10).", form.nombre);
 
   const coupe = (v, max) => v.trim().slice(0, max);
   const reponse = {
     nom: coupe(nom, 120),
     presence,
-    nombre,
-    accompagnants: presence === "oui" ? coupe(form.accompagnants.value, 300) : "",
     allergies: presence === "oui" ? coupe(form.allergies.value, 300) : "",
     chanson: presence === "oui" ? coupe(form.chanson.value, 200) : "",
     message: coupe(form.message.value, 1000)

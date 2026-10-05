@@ -71,11 +71,11 @@
     <div class="conteneur etroit">
       <p class="sur-titre">Serez-vous des nôtres ?</p>
       <h2>Votre réponse</h2>
-      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>, une réponse par foyer.</p>
+      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>, <strong>une réponse par personne</strong> : chaque invité remplit son propre formulaire.</p>
 
       <form class="carte formulaire" id="form-rsvp" novalidate>
         <label class="champ">
-          <span>Nom et prénom *</span>
+          <span>Votre prénom et nom *</span>
           <input type="text" name="nom" required autocomplete="name" placeholder="Ex. : Marie Dupont">
         </label>
 
@@ -88,14 +88,6 @@
         </fieldset>
 
         <div id="si-present">
-          <label class="champ">
-            <span>Nombre de personnes (vous compris) *</span>
-            <input type="number" name="nombre" min="1" max="10" value="1" inputmode="numeric">
-          </label>
-          <label class="champ">
-            <span>Prénoms des personnes qui vous accompagnent</span>
-            <input type="text" name="accompagnants" placeholder="Ex. : Paul, Léa (8 ans)">
-          </label>
           <label class="champ">
             <span>Allergies ou régime alimentaire</span>
             <input type="text" name="allergies" placeholder="Ex. : sans gluten, allergie aux fruits à coque…">
@@ -122,7 +114,7 @@
         <p class="merci-coeur">💜</p>
         <h3 id="merci-titre">Merci !</h3>
         <p id="merci-texte"></p>
-        <button class="btn btn-lien" id="btn-autre">Envoyer une autre réponse</button>
+        <button class="btn btn-lien" id="btn-autre">Répondre pour une autre personne</button>
       </div>
     </div>
   </section>

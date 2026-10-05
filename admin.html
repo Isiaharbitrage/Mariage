@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Réponses · Espace mariés</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-lavande" style="min-height:100vh">
+<div class="admin">
+  <h1>Espace mariés</h1>
+  <p style="text-align:center;color:var(--doux);margin:0">Suivi des réponses au formulaire</p>
+
+  <form class="carte connexion" id="form-connexion">
+    <label class="champ"><span>E-mail</span><input type="email" name="email" required autocomplete="username"></label>
+    <label class="champ"><span>Mot de passe</span><input type="password" name="mdp" required autocomplete="current-password"></label>
+    <button class="btn" type="submit">Se connecter</button>
+    <p class="form-statut" id="statut-connexion"></p>
+  </form>
+
+  <div id="tableau-bord" hidden>
+    <div class="stats">
+      <div class="stat"><b id="s-presents">0</b><span>Personnes présentes</span></div>
+      <div class="stat"><b id="s-foyers">0</b><span>Réponses reçues</span></div>
+      <div class="stat"><b id="s-absents">0</b><span>Absents</span></div>
+      <div class="stat"><b id="s-allergies">0</b><span>Allergies signalées</span></div>
+    </div>
+    <div class="carte">
+      <div class="barre-outils">
+        <input type="text" id="recherche" placeholder="Rechercher un nom…" style="max-width:280px">
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-secondaire" id="btn-csv">Exporter (Excel)</button>
+          <button class="btn btn-secondaire" id="btn-playlist">Playlist</button>
+          <button class="btn btn-secondaire" id="btn-deco">Déconnexion</button>
+        </div>
+      </div>
+      <div class="tableau-wrap">
+        <table>
+          <thead><tr><th>Nom</th><th>Réponse</th><th>Pers.</th><th>Accompagnants</th><th>Allergies</th><th>Chanson</th><th>Message</th><th>Date</th><th></th></tr></thead>
+          <tbody id="lignes"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script type="module" src="admin.js"></script>
+</body>
+</html>

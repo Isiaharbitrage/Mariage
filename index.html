@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Narjes & Isiah · 26 juin 2027</title>
+  <meta name="description" content="Toutes les infos pour célébrer le mariage de Narjes et Isiah.">
+  <meta property="og:title" content="Narjes & Isiah se marient !">
+  <meta property="og:description" content="Date, lieux, programme et formulaire de réponse.">
+  <meta property="og:image" content="photo.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#accueil" class="nav-logo"><span id="nav-initiales">N & I</span></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="nav-toggle"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#lieux">Lieux</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#rsvp">Réponse</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contacts">Contacts</a></li>
+  </ul>
+</nav>
+
+<!-- ACCUEIL -->
+<header class="hero" id="accueil">
+  <img src="photo.jpg" alt="Narjes et Isiah" class="hero-photo">
+  <div class="hero-voile"></div>
+  <div class="hero-contenu">
+    <p class="hero-sur">Nous nous marions</p>
+    <h1 class="hero-noms"><span id="nom-a"></span> <span class="esperluette">&</span> <span id="nom-b"></span></h1>
+    <p class="hero-date" id="hero-date"></p>
+    <p class="hero-lieu">Toulouse · Marzens</p>
+    <div class="compteur" id="compteur" aria-label="Compte à rebours">
+      <div><b id="cd-j">–</b><span>jours</span></div>
+      <div><b id="cd-h">–</b><span>heures</span></div>
+      <div><b id="cd-m">–</b><span>minutes</span></div>
+    </div>
+    <a href="#rsvp" class="btn btn-clair">Je réponds</a>
+  </div>
+  <a href="#lieux" class="hero-fleche" aria-label="Descendre">⌄</a>
+</header>
+
+<main>
+  <!-- LIEUX -->
+  <section class="section bg-lavande" id="lieux">
+    <div class="conteneur">
+      <p class="sur-titre">Où ?</p>
+      <h2>Les lieux</h2>
+      <div class="lieux" id="lieux-liste"></div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section bg-menthe" id="programme">
+    <div class="conteneur etroit">
+      <p class="sur-titre" id="programme-date"></p>
+      <h2>Le programme</h2>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section bg-ciel" id="rsvp">
+    <div class="conteneur etroit">
+      <p class="sur-titre">Serez-vous des nôtres ?</p>
+      <h2>Votre réponse</h2>
+      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>, une réponse par foyer.</p>
+
+      <form class="carte formulaire" id="form-rsvp" novalidate>
+        <label class="champ">
+          <span>Nom et prénom *</span>
+          <input type="text" name="nom" required autocomplete="name" placeholder="Ex. : Marie Dupont">
+        </label>
+
+        <fieldset class="champ">
+          <legend>Serez-vous présent·e ? *</legend>
+          <div class="choix">
+            <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Oui, avec joie !</span></label>
+            <label class="pastille"><input type="radio" name="presence" value="non"><span>Non, désolé·e</span></label>
+          </div>
+        </fieldset>
+
+        <div id="si-present">
+          <label class="champ">
+            <span>Nombre de personnes (vous compris) *</span>
+            <input type="number" name="nombre" min="1" max="10" value="1" inputmode="numeric">
+          </label>
+          <label class="champ">
+            <span>Prénoms des personnes qui vous accompagnent</span>
+            <input type="text" name="accompagnants" placeholder="Ex. : Paul, Léa (8 ans)">
+          </label>
+          <label class="champ">
+            <span>Allergies ou régime alimentaire</span>
+            <input type="text" name="allergies" placeholder="Ex. : sans gluten, allergie aux fruits à coque…">
+          </label>
+          <label class="champ">
+            <span>Votre chanson préférée pour la soirée 🎶</span>
+            <input type="text" name="chanson" placeholder="Titre – Artiste">
+          </label>
+        </div>
+
+        <label class="champ">
+          <span>Un petit mot pour nous ?</span>
+          <textarea name="message" rows="3" placeholder="Facultatif"></textarea>
+        </label>
+
+        <!-- anti-robot : champ invisible -->
+        <input type="text" name="site" class="piege" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn" id="btn-envoyer">Envoyer ma réponse</button>
+        <p class="form-statut" id="form-statut" role="status"></p>
+      </form>
+
+      <div class="carte merci" id="merci" hidden>
+        <p class="merci-coeur">💜</p>
+        <h3 id="merci-titre">Merci !</h3>
+        <p id="merci-texte"></p>
+        <button class="btn btn-lien" id="btn-autre">Envoyer une autre réponse</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section bg-rose" id="faq">
+    <div class="conteneur etroit">
+      <p class="sur-titre">Vos questions</p>
+      <h2>FAQ</h2>
+      <div class="faq" id="faq-liste"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="section bg-lavande" id="contacts">
+    <div class="conteneur">
+      <p class="sur-titre">Une question, une surprise ?</p>
+      <h2>Nos témoins</h2>
+      <div class="temoins" id="temoins-liste"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <p class="pied-noms" id="pied-noms"></p>
+  <p id="pied-date"></p>
+</footer>
+
+<script src="config.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
